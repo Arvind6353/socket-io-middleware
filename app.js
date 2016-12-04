@@ -7,7 +7,7 @@ io.on('connection', function(socket){
 		msg.text = msg.user + ' has joined the room';
 		socket.join(room_name);
 
-		socket.in(msg.room).emit('message', msg);
+		socket.broadcast.to(msg.room).emit('message', msg);
 	});
 
 
@@ -15,7 +15,7 @@ io.on('connection', function(socket){
 		msg.text = msg.user + ' has left the room';
 
 		socket.leave(msg.room);
-		socket.in(msg.room).emit('message', msg);
+		socket.broadcast.to(msg.room).emit('message', msg);
 	});
 
 
