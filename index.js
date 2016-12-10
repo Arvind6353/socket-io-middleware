@@ -20,7 +20,7 @@ io.on('connection', function(socket){
 
 	socket.on('join:room', function(msg){
 		var room_name = msg.room;
-		msg.text = msg.user + ' has joined the room '+msg.room;
+		msg.text = ' has joined the room '+msg.room;
 		socket.join(room_name);
 		console.log("joining rooom ---->" +msg.room)
 
@@ -31,7 +31,7 @@ io.on('connection', function(socket){
 
 
 	socket.on('leave:room', function(msg){
-		msg.text = msg.user + ' has left the room' +msg.room;
+		msg.text = ' has left the room ' +msg.room;
 
 		socket.leave(msg.room);
 
