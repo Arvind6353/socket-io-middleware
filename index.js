@@ -43,7 +43,7 @@ io.on('connection', function(socket){
 		console.log("Sending msg to the room  "+msg.room+" ---->" +msg)
 		
 		sendMsg(msg.text);
-		
+
 		socket.broadcast.to(msg.room).emit('message', msg);
 	});
 
@@ -53,7 +53,7 @@ io.on('connection', function(socket){
 
 
 function sendMsg(msg){
-client.sendMessage('Hello world', function(error, response) {
+client.sendMessage(msg, function(error, response) {
      if (error) {
         console.log('Some error occurs: ', error);
      }
