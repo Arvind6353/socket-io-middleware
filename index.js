@@ -20,11 +20,11 @@ io.on('connection', function(socket){
 
 	socket.on('join:room', function(msg){
 		var room_name = msg.room;
-		msg.text = msg.user + ' has joined the room';
+		msg.text = msg.user + ' has joined the room '+msg.room;
 		socket.join(room_name);
 		console.log("joining rooom ---->" +msg.room)
 
-		sendMsg(msg.text);
+		sendMsg(msg.text,msg.room);
 
 		socket.broadcast.to(msg.room).emit('message', msg);
 	});
@@ -42,7 +42,7 @@ io.on('connection', function(socket){
 
 		console.log("Sending msg to the room  "+msg.room+" ---->" +msg)
 		
-		sendMsg(msg.text);
+		sendMsg(msg.text,msg.room);
 
 		socket.broadcast.to(msg.room).emit('message', msg);
 	});
@@ -52,8 +52,15 @@ io.on('connection', function(socket){
 
 
 
-function sendMsg(msg){
-client.sendMessage(msg, function(error, response) {
+function sendMsg(msg,room){
+
+var  options = {
+        data: {
+           room:room
+        }
+    };
+
+client.sendMessage(msg, options,function(error, response) {
      if (error) {
         console.log('Some error occurs: ', error);
      }
