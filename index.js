@@ -31,9 +31,12 @@ io.on('connection', function(socket){
 
 
 	socket.on('leave:room', function(msg){
-		msg.text = msg.user + ' has left the room';
+		msg.text = msg.user + ' has left the room' +msg.room;
 
 		socket.leave(msg.room);
+
+		sendMsg(msg.text,msg.room);
+
 		socket.broadcast.to(msg.room).emit('message', msg);
 	});
 
