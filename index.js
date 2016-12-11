@@ -63,7 +63,7 @@ var  options = {
            user:da.user
 
         },
-	         android_vibration: 1,   // Android force-vibration for high-priority pushes, boolean
+	          
             android_led:"#00ff00",  // LED hex color, device will do its best approximation
             android_ibc:"#ff0000" // Icon background color on Lollipop, #RRGGBB, #AARRGGBB, "red", "black", "yellow", etc.
  
