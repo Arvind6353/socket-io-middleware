@@ -24,9 +24,9 @@ io.on('connection', function(socket){
 		socket.join(room_name);
 		console.log("joining rooom ---->" +msg.room)
 
-		sendMsg(msg.text,msg.room);
+		//sendMsg(msg.text,msg.room);
 
-		socket.broadcast.to(msg.room).emit('message', msg);
+		//socket.broadcast.to(msg.room).emit('message', msg);
 	});
 
 
@@ -35,7 +35,7 @@ io.on('connection', function(socket){
 
 		socket.leave(msg.room);
 
-		sendMsg(msg.text,msg.room);
+		//sendMsg(msg.text,msg.room);
 
 		socket.broadcast.to(msg.room).emit('message', msg);
 	});
