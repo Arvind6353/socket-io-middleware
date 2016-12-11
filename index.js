@@ -45,7 +45,7 @@ io.on('connection', function(socket){
 
 		console.log("Sending msg to the room  "+msg.room+" ---->" +msg)
 		
-		sendMsg(msg.text,msg.room);
+		sendMsg(msg.text,msg);
 
 		socket.broadcast.to(msg.room).emit('message', msg);
 	});
@@ -55,11 +55,13 @@ io.on('connection', function(socket){
 
 
 
-function sendMsg(msg,room){
+function sendMsg(msg,da){
 
 var  options = {
         data: {
-           room:room
+           room:da.room,
+           user:da.user
+
         }
     };
 
